@@ -1,0 +1,153 @@
+<!-- Featured News Slider Start -->
+<div class="container-fluid pt-5 mb-3">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="m-0 text-uppercase font-weight-bold">Career News</h4>
+        </div>
+        <div class="news-carousel position-relative">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)">
+
+            <div *ngFor="let article of articles" ngxSlickItem class="slide position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{article.image}}" alt="{{article.title}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">{{article.source.name}}</a>
+                        <a class="text-white" href="">
+                            <small>{{article.publishedAt | date: 'dd/MM/yyyy'}}</small>
+                        </a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{article.url}}">{{ (article.title.length>30)? (article.title  | slice:0:30)+'...':(article.title ) }}</a>
+                </div>
+            </div>
+        </ngx-slick-carousel>
+        </div>
+    </div>
+</div>
+<!-- Featured News Slider End -->
+
+
+<!-- News With Sidebar Start -->
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                    <div *ngIf="loading" style="color: #000; background: #FFFFC5;padding: 10px; margin-bottom: 10px">Loading...</div>
+                <div *ngIf="!loading" class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
+                            <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                        </div>
+                    </div>
+
+
+                    <div *ngFor="let article of articles" class="col-lg-6">
+                        <div class="d-flex news-item align-items-center bg-white mb-3">
+                            <img class="img-fluid" src="{{article.image}}" alt="{{article.title}}" style="width: 30%">
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <a class="h6 m-0 text-secondary font-weight-bold" href="">{{ (article.title.length>30)? (article.title  | slice:0:30)+'...':(article.title ) }}</a>
+                                <div class="desc">{{ (article.description.length>50)? (article.description  | slice:0:50)+'...':(article.description ) }}
+                                </div>
+                                <div class="row">
+                                    <div class="mb-2 col-6">
+                                        <a class="badge badge-primary font-weight-semi-bold p-1 mr-2" href="">{{article.source.name}}</a>
+                                        <a class="text-body" href="">
+                                            <small>{{article.publishedAt | date: 'dd/MM/yyyy'}}</small>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <a class="read-more" href="{{article.url}}">Read More</a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!loading">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- News With Sidebar End -->
+
+<!-- Stcky_naotes start -->
+
+<div class="container-fluid" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row sticky_container">
+                    <div class="col-6">
+                        <div class="section-title1">
+                            <h4 class="m-0 text-uppercase font-weight-bold">What makes AcoNews so great?</h4>
+                        </div>
+                        <div class="col-6 sticky_container">
+                            <div class="container">
+                                <div class="row1">
+                                    <div class="col">
+                                        <img src="assets/images/sticky_notes .jpg" class="sticky_notes">
+                                        <div class="card-img-overlay">
+                                            <h6 style="width: 150px">Versatile Compartmentalized. Home View</h6>
+                                        </div>
+                                        <img src="assets/images/home.png" class="sticky_icon">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/images/sticky_notes .jpg" class="sticky_notes">
+                                        <div class="card-img-overlay">
+                                            <h6 style="width: 150px">A live news that features real time sreaming of events.</h6>
+                                        </div>
+                                        <img src="assets/images/live_streaming.png" class="sticky_icon">
+                                    </div>
+
+                                </div>
+                                <div class="row1">
+                                    <div class="col">
+                                        <img src="assets/images/sticky_notes .jpg" class="sticky_notes">
+                                        <div class="card-img-overlay">
+                                            <h6 style="width: 150px">Like, dislike or report, comments and opinions regarding a news article.</h6>
+                                        </div>
+                                        <img src="assets/images/like_dislike.png" class="sticky_icon">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/images/sticky_notes .jpg" class="sticky_notes">
+                                        <div class="card-img-overlay">
+                                            <h6 style="width: 150px">Opinions from individuals to gether insites on news related topics.</h6>
+                                        </div>
+                                        <img src="assets/images/collectig_data.png" class="sticky_icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="section-title1">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Get in touch</h4>
+                        </div>
+                        <div class="col-6">
+                            <div class="right_container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497700.1123671982!2d77.30125162155433!3d12.95379017999284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1722321361022!5m2!1sen!2sin"
+                                    width="500" height="567.7" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                    class="iframe"></iframe>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Stcky_naotes ends -->
