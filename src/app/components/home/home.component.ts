@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNews(): any {
-    let apikey = '77be705df9269a6be28dcf76155c5459';
+    let apikey = '<GNEWS_API_KEY>';
     let url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=ind&max=20&apikey=' + apikey;
     return this.http.get<any>(url);
   }
